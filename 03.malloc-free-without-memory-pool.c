@@ -46,6 +46,7 @@ void *my_malloc(size_t size) {
   }
 
   size_t total_size = size + sizeof(Block);
+  // NOTE: we request 'total_size' but, kurnel give page size chunk.
   Block *new_block = (Block *)mmap(NULL, total_size, PROT_READ | PROT_WRITE,
                                    MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
 
